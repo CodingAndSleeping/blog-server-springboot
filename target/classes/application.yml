@@ -12,6 +12,15 @@ spring:
     port: 6379
     password:
     database: 0
+  web:
+    resources:
+      static-locations: /avater/**
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
