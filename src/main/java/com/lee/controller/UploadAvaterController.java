@@ -4,7 +4,6 @@ package com.lee.controller;
 import com.lee.common.Result;
 import com.lee.services.UploadAvaterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +15,7 @@ import java.util.HashMap;
 
 @RestController
 @CrossOrigin
-public class UploadAvater {
+public class UploadAvaterController {
 
     @Autowired
     private UploadAvaterService uploadAvaterService;
@@ -25,11 +24,9 @@ public class UploadAvater {
     public Result<?> uploadAvater(String username, MultipartFile file, HttpServletRequest req) throws IOException {
         String path = req.getServletContext().getRealPath("/avater/");
         String filename = saveFile(file, path);
-
         uploadAvaterService.uploadAvater(username, "avater/" + filename);
-
         HashMap<String, String> map = new HashMap<>();
-        map.put("imgUrl", "avater/" + filename);
+        map.put("imgUrl", "/avater/" + filename);
         return Result.success(map);
     }
 
