@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/myblog?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/myblog?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,7 +14,7 @@ spring:
     database: 0
   web:
     resources:
-      static-locations: /avater/**
+      static-locations: avater/**
 
   servlet:
     multipart:

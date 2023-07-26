@@ -19,6 +19,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public BlogVo getBlogs(BlogBo blogBo) {
         QueryWrapper<Blog> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(StringUtils.isNotBlank(blogBo.getLabel()), "labels", blogBo.getLabel());
+
         queryWrapper.like(StringUtils.isNotBlank(blogBo.getKeywords()), "title", blogBo.getKeywords());
         queryWrapper.orderByDesc("create_time");
         Page<Blog> page = new Page<>(blogBo.getPage(), blogBo.getPageSize());
